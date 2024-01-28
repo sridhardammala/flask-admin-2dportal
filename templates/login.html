@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synaps Administration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <link rel="stylesheet" href="static/css/styles.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="p-3 mb-2 bg-secondary text-white" class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="../static/pltlogo.png" alt="" width="120" height="88">
+            <h2 class="text-center">Synaps Configuration and Reporting</h2>
+        </div>
+    </div>
+     <div class="register-photo">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <form method="POST" action = "/homepage">
+                <div class="col-md-10 mx-auto col-lg-5">
+
+                  <div class="form-floating mb-3">
+                      <label for="uname">User Name:</label>
+                      <input type="text" class="form-control" id="uname" placeholder="User Name" required>
+                  </div>
+                  <div class="form-floating mb-3">
+                      <label for="pword">Password:</label>
+                      <input type="password" class="form-control" id="pword" placeholder="Password" required>
+                  </div>
+                  <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                  <hr class="my-4">
+                  <small class="text-muted">Please login to the Sensor Admin portal using your AWS IAM credentials.</small>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+</body>
+</html>
+
+
+ <form method="post" action = "/check">
+                <h2 class="sr-only">Login Form</h2>
+                <div class="illustration"><i class="icon ion-ios-navigate" style="color:#aedc8a;"></i></div>
+                <div class="form-group"><input class="form-control" type="text" name="uname" placeholder="User Name"></div>
+                <div class="form-group"><input class="form-control" type="password" name="pword" placeholder="Password"></div>
+                <div class="form-group">
+                 <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block" style="background-color:#aedc8a;color:rgb(40,140,38);">
+
+                  <hr class="my-4">
+                  <small class="text-muted">Please login to the Sensor Admin portal using your AWS IAM credentials.</small>
+                </div>
+            </form>

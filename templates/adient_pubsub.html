@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/home.css">
+    <link rel="stylesheet" href="../static/list_sensor.css">
+    <title>Send PUB/SUB message</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <link rel="stylesheet" href="static/css/styles.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <body>
+    <div class="container">
+        <div class="p-1 mb-3 bg-light text-dark" class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="../static/pltlogo.png" alt="" width="120" height="88">
+            <h2 class="text-center">Administration and Test Portal</h2>
+        </div>
+    </div>
+     <div class="register-photo">
+        <div class="form-container">
+            <div class="image-holder"></div>
+
+                <div class="container">
+                    <ul>
+                        <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+                        <li class="dropdown">
+                          <a href="{{ url_for('adient') }}" class="dropbtn">Adient</a>
+                          <div class="submenu">
+                              <a href="{{ url_for('adient_pubsub') }}">Send Pub/Sub message</a>
+                              <a href="{{ url_for('adient_mlmodel') }}">Invoke ML model</a>
+                          </div>
+                        </li>
+                        <li class="dropdown">
+                          <a href="{{ url_for('mm') }}" class="dropbtn">Music Magpie</a>
+                          <div class="submenu">
+                              <a href="{{ url_for('mm_pubsub') }}">Send Pub/Sub message</a>
+                              <a href="{{ url_for('mm_mlmodel') }}">Invoke ML model</a>
+                          </div>
+                        </li>
+                        <li style="float:right"><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
+                      </ul>
+                        
+                      </ul>
+                  </div>
+                  {% for mess in get_flashed_messages()  %}
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  {{mess}}
+                  </div>
+              {% endfor %}    
+            <form id="adient_pubsub" method="post" action = "/adient_pubsub">
+               <div class="container">
+        <div class="p-3 mb-2 bg-light text-dark" class="py-5 text-center">
+
+            <label for="sensorID">Enter your input JSON:</label><br>
+            <div class="form-floating form-group"><input class="form-control" type="text" name="output_json"></div>
+            </div>
+            <div class="form-group">
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary btn-block" style="background-color:#aedc8a;color:rgb(40,140,38);">
+        </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+    

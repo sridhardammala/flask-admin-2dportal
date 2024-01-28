@@ -1,0 +1,62 @@
+---
+name: Build and Push Python Image to Google Cloud Platform
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-push-gcr:
+    name: Build and Push to GCP
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: flaskapi
+      PROJECT_ID: mt-2d-portal
+      REPOSITORY_NAME: git-hub-actions
+      DOCKER_PKG_LOCATION: europe-west4-docker.pkg.dev
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # - id: 'auth'
+    - name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0.4.0'
+      with:
+        credentials_json: '${{ secrets.SERVICE_ACCOUNT_KEY}}'  
+   
+    - name: Push Docker Image to Artifact Registry
+      # env: 
+      #   GOOGLE_PROJECT=${{ env.PROJECT_ID }}   --build-arg MY_ENV_VAR=value_to_pass -t my-image-name . 
+      run: |-
+        gcloud auth configure-docker europe-west4-docker.pkg.dev
+        docker  build -t europe-west4-docker.pkg.dev/mt-2d-portal/github-artifcats/flaskapi:latest .
+        credential helper - run: | gcloud auth configure-docker -q
+        docker push europe-west4-docker.pkg.dev/mt-2d-portal/github-artifcats/flaskapi:latest
+
+
+ # - name: install the gcloud CLI
+    #   uses: google-github-actions/setup-gcloud@main
+    #   with:
+    #     service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+    #     project_id: ${{ env.PROJECT_ID }}
+    #     export_default_credentials: true
+
+    
+          
+
+    # - name: Build Docker Image
+    #   run: docker build -t $IMAGE_NAME:latest .
+
+   
+    # - name: Configure Docker Client
+    #   run: |-
+    #     curl -fsSL "https://github.com/GoogleCloudPlatform/docker-credential-gcr/releases/download/v2.1.14/docker-credential-gcr_linux_amd64-2.1.14.tar.gz" \
+    #     | tar xz docker-credential-gcr \
+    #     && chmod +x docker-credential-gcr && sudo mv docker-credential-gcr /usr/bin/
+    #     docker-credential-gcr configure-docker --registries=$DOCKER_PKG_LOCATION
+    #     gcloud auth configure-docker --quiet
+    #     gcloud auth configure-docker $DOCKER_PKG_LOCATION --quiet
+    #     gcloud auth print-access-token \
+    #     --impersonate-service-account admin-ops-account@mt-2d-portal.iam.gserviceaccount.com | docker login \
+    #     -u oauth2accesstoken \
+    #     --password-stdin https://europe-west2-docker.pkg.dev
+  
